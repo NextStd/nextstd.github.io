@@ -1,0 +1,7 @@
+[book]
+title = "NextStd Docs"
+authors = ["Vaishnav Sabari Girish"]
+language = "en"
+
+[build]
+build-dir = "docs"
