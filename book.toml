@@ -8,8 +8,7 @@ build-dir = "docs"
 
 [output.html]
 git-repository-url = "https://github.com/NextStd"
-default-theme = "dark"
-preferred-dark-theme = "dark"
+default-theme = "navy"
 additional-css = ["./mdbook-admonish.css"]
 
 [preprocessor.admonish]
