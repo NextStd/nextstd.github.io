@@ -228,6 +228,66 @@ int main() {
 </ul>
 <p>Check out the <a href="./concepts/architecture.html">Architecture</a> section to deep dive into the internal design.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h1>
+<p>Before you can build or use <strong>NextStd</strong>, you need to ensure your development environment is set up with the necessary tools.</p>
+<p>Since <strong>NextStd</strong> bridges two languages, you will need toolchains for both <strong>Rust</strong> and <strong>C</strong>.</p>
+<div id="admonition-platform-support" class="admonition admonish-note" role="note" aria-labelledby="admonition-platform-support-title">
+<div class="admonition-title">
+<div id="admonition-platform-support-title">
+<p>Platform Support</p>
+</div>
+<a class="admonition-anchor-link" href="getting_started/prerequisites.html#admonition-platform-support"></a>
+</div>
+<div>
+<p>NextStd is currently tested primarily on <strong>Linux</strong> (x86_64). macOS and Windows support is experimental.</p>
+</div>
+</div>
+<h2 id="1-the-rust-toolchain"><a class="header" href="#1-the-rust-toolchain">1. The Rust Toolchain</a></h2>
+<p>The backend logic of NextStd is written in Rust. You need the Rust compiler (<code>rustc</code>) and the package manager (<code>cargo</code>).</p>
+<p><strong>Check if installed:</strong></p>
+<pre><code class="language-bash">cargo --version
+
+</code></pre>
+<p><strong>How to install:</strong>
+If you don't have it, install it via <code>rustup</code> (the recommended way):</p>
+<pre><code class="language-bash">curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+</code></pre>
+<p><em>Restart your terminal after installation.</em></p>
+<h2 id="2-c-compiler-gcc-or-clang"><a class="header" href="#2-c-compiler-gcc-or-clang">2. C Compiler (GCC or Clang)</a></h2>
+<p>To compile the frontend C code and link it with the Rust backend, you need a standard C compiler.</p>
+<p><strong>Check if installed:</strong></p>
+<pre><code class="language-bash">gcc --version
+# OR
+clang --version
+
+</code></pre>
+<p><strong>How to install:</strong></p>
+<ul>
+<li><strong>Ubuntu/Debian:</strong> <code>sudo apt install build-essential</code></li>
+<li><strong>Fedora:</strong> <code>sudo dnf groupinstall "Development Tools"</code></li>
+<li><strong>macOS:</strong> <code>xcode-select --install</code></li>
+<li><strong>Windows:</strong> Install <a href="https://www.google.com/search?q=https://www.mingw-w64.org/">MinGW-w64</a> or use WSL2 (Recommended).</li>
+</ul>
+<h2 id="3-make"><a class="header" href="#3-make">3. Make</a></h2>
+<p>We use <code>Make</code> to automate the complex process of compiling the Rust static library, compiling the C object files, and linking them together.</p>
+<p><strong>Check if installed:</strong></p>
+<pre><code class="language-bash">make --version
+
+</code></pre>
+<p><strong>How to install:</strong></p>
+<ul>
+<li><strong>Linux:</strong> Usually pre-installed. If not: <code>sudo apt install make</code></li>
+<li><strong>macOS:</strong> Included with Xcode command line tools.</li>
+<li><strong>Windows:</strong> Install via typical package managers (Chocolatey, Scoop) or use <code>mingw32-make</code>.</li>
+</ul>
+<h2 id="4-summary-of-requirements"><a class="header" href="#4-summary-of-requirements">4. Summary of Requirements</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>Purpose</th><th>Minimum Version</th></tr></thead><tbody>
+<tr><td><strong>Cargo</strong></td><td>Builds the Rust backend library (<code>libns_io.a</code>)</td><td>1.70+</td></tr>
+<tr><td><strong>GCC/Clang</strong></td><td>Compiles your <code>.c</code> files and links binaries</td><td>GCC 9+ / Clang 10+</td></tr>
+<tr><td><strong>Make</strong></td><td>Orchestrates the build process</td><td>3.81+</td></tr>
+</tbody></table>
+</div>
+<p>Once you have these tools ready, proceed to the <a href="getting_started/./installation.html">Installation</a> guide.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="installation--build"><a class="header" href="#installation--build">Installation &amp; Build</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="quick-start-guide"><a class="header" href="#quick-start-guide">Quick Start Guide</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="the-architecture"><a class="header" href="#the-architecture">The Architecture</a></h1>
