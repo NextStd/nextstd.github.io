@@ -171,17 +171,61 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
-<div id="admonition-note" class="admonition admonish-note" role="note" aria-labelledby="admonition-note-title">
+<p>Welcome to the official documentation for <strong>NextStd</strong>.</p>
+<div id="admonition-experimental-software" class="admonition admonish-warning" role="note" aria-labelledby="admonition-experimental-software-title">
 <div class="admonition-title">
-<div id="admonition-note-title">
-<p>Note</p>
+<div id="admonition-experimental-software-title">
+<p>Experimental Software</p>
 </div>
-<a class="admonition-anchor-link" href="#admonition-note"></a>
+<a class="admonition-anchor-link" href="#admonition-experimental-software"></a>
 </div>
 <div>
-<p><strong>NextStd</strong> cannot be used directly as of now. It is still being heavily tested</p>
+<p><strong>NextStd</strong> is currently in active development (Alpha).
+While the core printing logic is memory-safe, the API is subject to breaking changes. Do not use in mission-critical production systems yet.</p>
 </div>
 </div>
+<h2 id="what-is-nextstd"><a class="header" href="#what-is-nextstd">What is NextStd?</a></h2>
+<p><strong>NextStd</strong> is a modern, memory-safe alternative to the C standard library (<code>stdio.h</code>), built entirely on a <strong>Rust</strong> backend.</p>
+<p>It aims to solve the biggest problem in C development: <strong>Safety.</strong> By offloading complex I/O operations to Rust, we can guarantee memory safety, eliminate buffer overflows, and provide modern features—all while maintaining the familiar syntax and performance of C.</p>
+<h2 id="why-replace-stdioh"><a class="header" href="#why-replace-stdioh">Why Replace <code>stdio.h</code>?</a></h2>
+<p>The standard C library is powerful but dangerous. A single mistake in a <code>printf</code> format specifier can crash your program or open security vulnerabilities.</p>
+<p><strong>NextStd</strong> fixes this by introducing a modern API layer:</p>
+<ol>
+<li><strong>Type Safety:</strong> No more <code>%d</code> or <code>%s</code>. We use C11 <code>_Generic</code> macros to automatically detect types.</li>
+<li><strong>Memory Safety:</strong> The backend implementation uses Rust's <code>std::io</code>, ensuring that buffer overflows are structurally impossible in the library itself.</li>
+<li><strong>Modern Ergonomics:</strong> Clean, readable function calls that look like 2026, not 1972.</li>
+</ol>
+<h2 id="a-quick-comparison"><a class="header" href="#a-quick-comparison">A Quick Comparison</a></h2>
+<h3 id="standard-c-the-old-way"><a class="header" href="#standard-c-the-old-way">Standard C (The Old Way)</a></h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    float x = 3.14;
+    // ⚠️ RISK: Wrong specifier (%d) for float leads to undefined behavior
+    printf("Value: %d\n", x); 
+    return 0;
+}
+
+</code></pre>
+<h3 id="nextstd-the-new-way"><a class="header" href="#nextstd-the-new-way">NextStd (The New Way)</a></h3>
+<pre><code class="language-c">#include "ns_io.h"
+
+int main() {
+    float x = 3.14;
+    // ✅ SAFE: Automatically routed to ns_print_float()
+    ns_print(x); 
+    return 0;
+}
+
+</code></pre>
+<h2 id="how-it-works"><a class="header" href="#how-it-works">How It Works</a></h2>
+<p><strong>NextStd</strong> is not just a wrapper. It is a bridge between two worlds:</p>
+<ul>
+<li><strong>Frontend (C):</strong> Uses standard headers and <code>extern "C"</code> definitions.</li>
+<li><strong>Bridge (FFI):</strong> Handles the raw pointer translation.</li>
+<li><strong>Backend (Rust):</strong> Executes the logic with full memory safety guarantees.</li>
+</ul>
+<p>Check out the <a href="./concepts/architecture.html">Architecture</a> section to deep dive into the internal design.</p>
 
                     </main>
 
