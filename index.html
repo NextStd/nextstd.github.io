@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextStd | Safer C Standard Library</title>
+    <!-- Clean fonts from Google Fonts -->
+    <link href="[https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap)" rel="stylesheet">
+    <!-- External Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+
+    <nav class="navbar">
+      <div class="nav-content">
+        <div class="logo">NextStd</div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#contributors">Contributors</a></li>
+          <li><a href="#comparison">Compare</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <header class="hero" id="about">
+      <div class="hero-content">
+        <h1>Type-Safe I/O for the Next Generation</h1>
+        <p>Working toward a safer, well-defined, and modern alternative to traditional <code>C</code> standard library components. Powered by Rust, built for C, and optimized for embedded systems.</p>
+        <div class="hero-buttons">
+          <a href="#comparison" class="btn btn-primary">See the Difference</a>
+          <a href="https://github.com/NextStd" target="_blank" class="btn btn-secondary">View on GitHub</a>
+        </div>
+      </div>
+    </header>
+
+    <section id="contributors" class="section">
+      <div class="section-container">
+        <h2>The Team</h2>
+        <p class="section-subtitle">The developers bringing memory safety to C.</p>
+        <!-- This div is populated dynamically by the GitHub API -->
+        <div id="dev-grid" class="grid">
+          <p style="text-align: center; width: 100%; color: var(--nord9);">Loading contributors from GitHub...</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="comparison" class="section bg-alt">
+      <div class="section-container">
+        <h2><code>stdio.h</code> vs <code>ns.h</code></h2>
+        <p class="section-subtitle">Why upgrade your standard library?</p>
+        <div class="table-wrapper">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th><code>&lt;stdio.h&gt;</code> / <code>&lt;string.h&gt;</code></th>
+                <th><code>ns.h</code> (NextStd)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Type Safety</strong></td>
+                <td class="danger">None. Relies on developer memory.</td>
+                <td class="success">Automatic compile-time routing via C11 <code>_Generic</code>.</td>
+              </tr>
+              <tr>
+                <td><strong>Format Specifiers</strong></td>
+                <td class="danger">Required (<code>%d</code>, <code>%s</code>, <code>%f</code>). Segfaults if mismatched.</td>
+                <td class="success">Not required. Just pass the variable.</td>
+              </tr>
+              <tr>
+                <td><strong>String Memory</strong></td>
+                <td class="danger">Null-terminated (<code>char*</code>). <code>O(N)</code> length, overflow risk.</td>
+                <td class="success">Small String Optimization (<code>SSO</code>). Zero heap fragmentation.</td>
+              </tr>
+              <tr>
+                <td><strong>Input Handling</strong></td>
+                <td class="danger"><code>scanf</code> leaves dangling newlines and crashes on bad types.</td>
+                <td class="success"><code>ns_read</code> safely defaults to 0 on invalid input.</td>
+              </tr>
+              <tr>
+                <td><strong>Backend</strong></td>
+                <td>Legacy C code.</td>
+                <td>Modern Rust. Mathematically memory-safe.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="section-container">
+        <h2>Get in Touch</h2>
+        <p class="section-subtitle">Have questions or want to contribute? Reach out!</p>
+        <form action="mailto:vaishnav.sabari.girish@gmail.com" method="POST" enctype="text/plain" class="contact-form">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required placeholder="John Doe">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="john@example.com">
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required placeholder="How can we help?"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2026 NextStd Organization. Built with Rust and C.</p>
+    </footer>
+
+    <!-- External Script -->
+    <script src="script.js"></script>
+  </body>
+</html>
